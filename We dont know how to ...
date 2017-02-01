@@ -1,0 +1,13 @@
+Is this thing on?
+
+Since we don't know how to do this, we should figure out some of the types of things we need to figure out how to do.
+
+User has an opportunity to specify the region of the keyboard.
+Unconfined random key is generated
+Key is looked up in a dictionary or table
+The dictionary or table contains a coordinate pair (b,n)
+a list is somehow discerned of coordinate pairs which are +/- a finger's length
+n number of entries from that list are generated and displayed
+
+the passwords would need to be longer to account for the reduced randomness of confinement.
+
