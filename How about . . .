@@ -1,0 +1,6 @@
+This is another idea. How about an application that takes a clumsy decimal representation of an irrational number, ie 1.41421356237
+and cycles through powers to find the irrational number that it's likely to represent.
+
+This would only be useful for college students who want to cheat at trigonometry. But it's an application we could create and put up online.
+
+Let's start running my raspberry pi as a server, so we can start hosting content this spring break. 
