@@ -1,0 +1,194 @@
+#include<iostream>
+#include<ctime>
+#include<cmath>
+#include<string>
+#include<vector>
+#include <cctype>
+using namespace std;
+
+
+
+
+int main() {
+
+	bool useUpperCase = false;
+	bool useLowerCase = true;
+	int passLength = 0;
+	char userInput = 'A';
+	bool generatePassword = true;
+	bool useNumbers = false;
+	bool usePunctuation = false;
+
+	int aNumber = 0;
+	char newChar = 'a';
+	bool lowerTest = false;
+	bool upperTest = false;
+	bool numberTest = false;
+	bool puncTest = false;
+	bool addChar = false;
+
+	srand(1);
+
+	vector<char>password;
+
+
+	cout << "How many characters would you like your password to contain?\n";
+	cin >> passLength;
+
+	cout << "Would you like your password to include lowercase letters? (Y/N) \n";
+	cin >> userInput;
+	if (userInput == 'Y')
+		useLowerCase = true;
+	else if (userInput == 'N')
+		useLowerCase = false;
+	else {
+		cout << "Invalid Character. Please close application and start over.";
+		generatePassword = false;
+	}
+
+	if (generatePassword == true) {
+		cout << "Would you like your password to include uppercase letters? (Y/N) \n";
+		cin >> userInput;
+		if (userInput == 'Y')
+			useUpperCase = true;
+		else if (userInput == 'N')
+			useUpperCase = false;
+		else {
+			cout << "Invalid Character. Please close application and start over.\n";
+			generatePassword = false;
+		}
+	}
+
+	if (generatePassword == true && useLowerCase == false && useUpperCase == false) {
+		cout << "Password must contain either uppercase or lowercase letters. Please close application and start over.\n";
+		generatePassword = false;
+	}
+
+	if (generatePassword == true) {
+		cout << "Would you like your password to contain numbers? \n";
+		cin >> userInput;
+		if (userInput == 'Y')
+			useNumbers = true;
+		else if (userInput == 'N')
+			useNumbers = false;
+		else {
+			cout << "Invalid Character. Please close application and start over.\n";
+			generatePassword = false;
+		}
+	}
+
+	if (generatePassword == true) {
+		cout << "Would you like your password to include Punctuation? \n";
+		cin >> userInput;
+		if (userInput == 'Y')
+			usePunctuation = true;
+		else if (userInput == 'N')
+			usePunctuation = false;
+		else {
+			cout << "Invalid Character. Please close applicaton and start over. \n";
+			generatePassword = false;
+		}
+	}
+
+	
+
+	//AND HERE WE BEGIN PASSWORD GENERATION
+	if(generatePassword == true)
+		for (int i = 0; i < passLength; i++) {
+			do{
+				aNumber = ((rand() % 94) + 33); // Need to generate a number between 33 and 126 inclusive
+				cout << "This is the number generated: " << aNumber << endl; //REMOVE
+				newChar = aNumber;
+				cout << "This is the char generated: " << newChar << endl; //REMOVE
+				
+																		   
+				//TEST FOR LOWERCASE
+				lowerTest = islower(newChar);
+				cout << "Is the char lowercase? " << lowerTest << endl;//REMOVE
+				if (useLowerCase == false) {
+					if (lowerTest == true) {
+						cout << "User opted out of lower case characters. Please generate next char. \n"; //REMOVE
+						addChar = false;
+					}
+					//else
+						//addChar = true;
+				}//else
+					//addChar = true;
+
+				//TEST FOR UPPERCASE
+				upperTest = isupper(newChar);
+				cout << "Is the char uppercase? " << upperTest << endl; //REMOVE
+				if (useUpperCase == false) {
+					if (upperTest == true) {
+						cout << "User opted out of upper case characters. Please generate next char. \n";//REMOVE
+						addChar = false;
+					}
+					else
+						addChar = true;
+				}else
+					addChar = true;
+
+				//TEST FOR NUMBERS
+				numberTest = isdigit(newChar);
+				cout << "Is the char a number? " << numberTest << endl; //REMOVE
+				if (useNumbers == false) {
+					if (numberTest == true) {
+						cout << "User opted out of numerical characters. Please generate next char. \n"; //REMOVE
+						addChar = false;
+					}
+					else
+						addChar = true;
+					
+				}
+				else
+					addChar = true;
+
+				//TEST FOR PUNCTUATION
+				puncTest = ispunct(newChar);
+				cout << "Is the char a punctuation mark? " << puncTest << endl; //REMOVE
+				if (usePunctuation == false) {
+					if (puncTest == true) {
+						cout << "User opted out of utilizing punctuation. Please generate next char. \n"; //REMOVE
+						addChar = false;
+					}
+					else
+						addChar = true;
+				}
+				else
+					addChar = true;
+				//if(addChar == true)
+				//password.push_back(newChar);
+			} while (addChar == false);
+			if(addChar == true)
+			password.push_back(newChar);
+
+		}
+
+
+	cout << "Your new password is: ";
+
+	for (int i = 0; i < password.size(); i++) {
+		cout << password[i];
+	}
+
+	cout << endl << endl;
+
+
+	system("pause");
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
